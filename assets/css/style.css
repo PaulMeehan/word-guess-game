@@ -8,5 +8,28 @@
 
 div {
     border: 1px solid red;
+}
 
+#main-title {
+    height: 216px;
+    text-align: center;
+    padding-top: 80px;
+    font-size: 50px;
+}
+
+#instructions {
+    font-weight: bold;
+    font-size: 28px;
+    color: red;
+    text-align: center;
+    padding-top: 15px;
+}
+
+
+#new-word-btn {
+    font-weight: bold;
+    font-size: 28px;
+    color: blue;
+    padding:  10px;
+    margin: 20px 110px;
 }
