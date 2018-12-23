@@ -8,8 +8,12 @@
 
 div {
     border: 1px solid red;
+
 }
 
+span {
+    height: 20px;
+}
 #main-title {
     height: 216px;
     text-align: center;
