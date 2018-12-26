@@ -1,11 +1,11 @@
-
-
 const maxGuesses = 12;   //maximum number of guesses per round
 var continuePlay = true;   //flag indication play should continue  (currently nothing setting this to False)
 var wordList = ["CHOCOLATE", "CAKE", "ICE CREAM", "COOKIES", "APPLE PIE", "SHERBERT"];
+var imgList = ["chocolate.jpg", "cake.jpg", "icecream.jpg", "cookies.jpg", "applePie.jpg", "sherbert.jpg"];
 var randomNum = 0;   //randomly selected number
 
 //create variables for each element that will be updated through code
+var elmtSideImage = document.getElementById("sideImage");   //Image on left side
 var elmtBanner = document.getElementById("banner");  //Banner element
 var elmtWins = document.getElementById("wins");      //Wins element
 var elmtLosses = document.getElementById("losses");  //Losses element
@@ -62,10 +62,7 @@ var game = {
     },
     initializeMask: function () {      //set the initial value of the mask
         //first remove any pre-existing elements
-        for (var i=0;i<this.mask.length;i++) {
-            this.mask.pop;
-        }
-
+        this.mask = [];
         for (var i = 0; i < this.currentWord.length; i++) {
             if (this.currentWord.charAt(i) === " ") {
                 this.mask[i] = ".";  // fill in dot for space characters
@@ -76,11 +73,11 @@ var game = {
     },
 
     updateBoard : function() {        //update document elements to show latest values
-        elmtWins.textContent="Wins: " + this.wins;
-        elmtLosses.textContent="Losses: " + this.losses;
-        elmtMask.textContent="Current puzzle: " + this.mask.join(" ");
-        elmtRemaining.textContent="Number of guesses remaining: " + this.numRemaining;
-        elmtGuessed.textContent="Letters already guessed: " + this.guessedLetters
+        elmtWins.textContent=this.wins;
+        elmtLosses.textContent=this.losses;
+        elmtMask.textContent=this.mask.join(" ");
+        elmtRemaining.textContent=this.numRemaining;
+        elmtGuessed.textContent=this.guessedLetters
     },
     newRound : function() {    //reset counters for new round
         randomNum = Math.floor(Math.random() * wordList.length - 1);  //randomly select an index number
@@ -94,6 +91,7 @@ var game = {
         changeButtonView("hide");
         setBanner("Make your guess");
         this.updateBoard();
+        elmtSideImage.setAttribute("src","assets/images/hangman.jpg");
     },
     processKey : function () {   //process the key pressed by the user
         var letter = event.key.toUpperCase();
@@ -115,6 +113,7 @@ var game = {
                 this.wins = this.wins + 1;
                 setBanner("You Win!");
                 changeButtonView("show");
+                elmtSideImage.setAttribute("src","assets/images/" + )
                 break;
             case "lose":
                 this.losses = this.losses + 1;
@@ -143,6 +142,7 @@ $(document).ready(function() {
         if (game.result === 'unknown') {  //only process key events while in the middle of a game
             game.processKey();
         };
+        //otherwise, wait for user to click "New Round" button
     };
 
 });

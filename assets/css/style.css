@@ -1,14 +1,18 @@
-.head-class {
+body {
+    background-image: url("../../assets/images/connectwork.png");
+    color : white;
+}
 
+.head-class {
 }
 
 .main-class {
 
 }
 
-/* div {
-    border: 1px solid red;
-} */
+.withBoarder {
+    border: 1px solid white;
+}
 
 span {
     height: 20px;
@@ -17,7 +21,18 @@ span {
     height: 216px;
     text-align: center;
     padding-top: 80px;
-    font-size: 50px;
+    font-size: 80px;
+    font-family: "pirate";
+}
+
+#subtitle {
+    font-size: 40px;
+    text-align: center;
+    transform: rotate(-11deg);
+    color : red;
+    position: relative;
+    top: -52px;
+    font-family: "French Script";
 }
 
 #banner {
@@ -35,4 +50,20 @@ span {
     color: blue;
     padding:  10px;
     text-align: center;
+    margin-top: 20px;
+}
+
+.gameBoard {
+    height: 35px;
+    font-size: 20px;
+}
+
+.maskFormat {
+    height: 67px;;
+    font-size: 40px;
+}
+
+img {
+    height: 300px;
+    width: 300px;
 }

@@ -24,7 +24,8 @@
         <header>
             <div class="row">
                 <div class="col-md-12">
-                    <h1 id="main-title">Let&apos;s Play Hangman!</h1>
+                    <h1 id="main-title">Hangman!</h1>
+                    <h2 id="subtitle">Just Desserts</h2>
                 </div>
             </div>
         </header>
@@ -33,31 +34,31 @@
             <div class="row">
 
                 <!-- Images -->
-                <div class="col-md-6">
-                    <h2>Images</h2>
+                <div class="col-md-4">
+                    <img id="sideImage">
                 </div>
                 
-                <div class="col-md-6">
+                <div class="col-md-8">
 
                     <!-- Separate container for Game board -->
-                    <div class="container">
+                    <div class="container withBoarder">
                         <div class="col-md-12">
-                            <p id="banner">&nbsp;</p>
+                            <p id="banner"></p>
                         </div>
-                        <div class="col-md-12">
-                            <span id="wins">&nbsp;</span>
+                        <div class="col-md-12 gameBoard">
+                            Wins: <span id="wins"></span>
                         </div>
-                        <div class="col-md-12">
-                            <span id="losses">&nbsp;</span>
+                        <div class="col-md-12 gameBoard">
+                            Losses: <span id="losses"></span>
                         </div>
-                        <div class="col-md-12">
-                            <span id="mask">&nbsp;</span>
+                        <div class="col-md-12 maskFormat">
+                            Current puzzle:&nbsp;&nbsp;&nbsp;<span id="mask"></span>
                         </div>
-                        <div class="col-md-12">
-                            <span id="remaining">&nbsp;</span>
+                        <div class="col-md-12 gameBoard">
+                            Number of remaining guesses: <span id="remaining"></span>
                         </div>
-                        <div class="col-md-12">
-                            <span id="guessed">&nbsp;</span>
+                        <div class="col-md-12 gameBoard">
+                            Letters already guessed: <span id="guessed"></span>
                         </div>
                         <div class="col-md-12" id="new-word-btn">
                             <button type="button" onclick="game.newRound()">Start A New Round</button>
@@ -81,7 +82,7 @@
         crossorigin="anonymous"></script>
 
     <!-- link to my javascript code -->
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script src="assets/javascript/game.js"></script>
         
 </body>
 
