@@ -1,8 +1,7 @@
 const maxGuesses = 12;   //maximum number of guesses per round
 var continuePlay = true;   //flag indication play should continue  (currently nothing setting this to False)
-var wordList = ["CHOCOLATE", "CAKE", "ICE CREAM", "COOKIES", "APPLE PIE", "SHERBERT"];
-var imgList = ["chocolate.jpg", "cake.jpg", "icecream.jpg", "cookies.jpg", "applePie.jpg", "sherbert.jpg"];
-var randomNum = 0;   //randomly selected number
+var wordList = ["CHOCOLATE", "CAKE", "ICE CREAM", "COOKIES", "APPLE PIE", "SHERBERT", "CANNOLI", "CHEESECAKE", "CREME BRULEE"];
+var imgList = ["chocolate.jpg", "cake.jpg", "icecream.jpg", "cookies.jpg", "applePie.jpg", "sherbert.jpg", "cannoli.jpeg", "cheesecake.jpg", "cremebrulee.jpg"];
 
 //create variables for each element that will be updated through code
 var elmtSideImage = document.getElementById("sideImage");   //Image on left side
@@ -19,18 +18,12 @@ var elmtNewWord = document.getElementById("new-word-btn");  //New word button
 function changeButtonView(newStatus) {
     switch (newStatus) {
         case "show":
-            // elmtNewWord.setAttribute("display", "block");
-            elmtNewWord.style.display = "block";
             elmtNewWord.style.visibility = "visible";
             break;
         case "hide":
-            // elmtNewWord.setAttribute("display", "hidden");
-            elmtNewWord.style.display = "none";
             elmtNewWord.style.visibility = "hidden";
             break;
         default:
-            // elmtNewWord.setAttribute("display", "block");
-            elmtNewWord.style.display = "block";
             elmtNewWord.style.visibility = "visible";
     }
 };
@@ -47,6 +40,7 @@ var game = {
     wins : 0,
     losses : 0,
     result : "unknown",      //string indicating the result of the game
+    randomNum : 0,           //random index number
     currentWord : "",
     mask : [],        //array of either the "_" character or a letter of the word
     numGuesses : 0,         //number of guesses this round
@@ -60,6 +54,7 @@ var game = {
             }
         };
     },
+    
     initializeMask: function () {      //set the initial value of the mask
         //first remove any pre-existing elements
         this.mask = [];
@@ -79,10 +74,10 @@ var game = {
         elmtRemaining.textContent=this.numRemaining;
         elmtGuessed.textContent=this.guessedLetters
     },
+    
     newRound : function() {    //reset counters for new round
-        randomNum = Math.floor(Math.random() * wordList.length - 1);  //randomly select an index number
-        this.currentWord = wordList[randomNum];
-        // this.currentWord = "ORANGE";   //use this for testing
+        game.randomNum = Math.floor(Math.random() * wordList.length);  //randomly select an index number
+        this.currentWord = wordList[game.randomNum];
         this.numGuesses = 0;
         this.numRemaining = maxGuesses;
         this.guessedLetters = "";
@@ -93,6 +88,19 @@ var game = {
         this.updateBoard();
         elmtSideImage.setAttribute("src","assets/images/hangman.jpg");
     },
+    
+    playLose: function () {
+        var loseAudio = document.createElement("audio");
+        loseAudio.setAttribute("src", "assets/sounds/loser2.wav");
+        loseAudio.play();
+    },
+    
+    playWin: function () {
+        var winAudio = document.createElement("audio");
+        winAudio.setAttribute("src", "assets/sounds/daffy44.mp3");
+        winAudio.play();
+    },
+
     processKey : function () {   //process the key pressed by the user
         var letter = event.key.toUpperCase();
         this.numGuesses = this.numGuesses + 1;
@@ -107,25 +115,28 @@ var game = {
         } else if (this.numRemaining === 0) {
             this.result = "lose";
         };
+
         //update elements according to result
         switch (this.result) {
             case "win":
                 this.wins = this.wins + 1;
                 setBanner("You Win!");
                 changeButtonView("show");
-                elmtSideImage.setAttribute("src","assets/images/" + )
+                this.playWin();
+                elmtSideImage.setAttribute("src", "assets/images/" + imgList[game.randomNum]);
                 break;
             case "lose":
                 this.losses = this.losses + 1;
                 setBanner("You Lose!  The word was " + this.currentWord);
                 changeButtonView("show");
+                this.playLose();
                 break;
             default:
             // do nothing
         };
-
         this.updateBoard();
     }
+
 };
 
 

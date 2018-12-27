@@ -3,13 +3,6 @@ body {
     color : white;
 }
 
-.head-class {
-}
-
-.main-class {
-
-}
-
 .withBoarder {
     border: 1px solid white;
 }
@@ -17,12 +10,13 @@ body {
 span {
     height: 20px;
 }
+
 #main-title {
     height: 216px;
     text-align: center;
-    padding-top: 80px;
-    font-size: 80px;
-    font-family: "pirate";
+    padding-top: 44px;
+    font-size: 121px;
+    font-family: 'Fredericka the Great', cursive;
 }
 
 #subtitle {
@@ -31,8 +25,8 @@ span {
     transform: rotate(-11deg);
     color : red;
     position: relative;
-    top: -52px;
-    font-family: "French Script";
+    top: -45px;
+    font-family: 'Merienda', cursive;
 }
 
 #banner {
@@ -60,7 +54,7 @@ span {
 
 .maskFormat {
     height: 67px;;
-    font-size: 40px;
+    font-size: 38px;
 }
 
 img {
