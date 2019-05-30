@@ -1,7 +1,7 @@
 const maxGuesses = 12;   //maximum number of guesses per round
 var continuePlay = true;   //flag indication play should continue  (currently nothing setting this to False)
 var wordList = ["CHOCOLATE", "CAKE", "ICE CREAM", "COOKIES", "APPLE PIE", "SHERBERT", "CANNOLI", "CHEESECAKE", "CREME BRULEE"];
-var imgList = ["chocolate.jpg", "cake.jpg", "icecream.jpg", "cookies.jpg", "applePie.jpg", "sherbert.jpg", "cannoli.jpeg", "cheesecake.jpg", "cremebrulee.jpg"];
+var imgList = ["chocolate.jpg", "cake.jpg", "icecream.jpg", "cookies.jpg", "applepie.jpg", "sherbert.jpg", "cannoli.jpeg", "cheesecake.jpg", "cremebrulee.jpg"];
 
 //create variables for each element that will be updated through code
 var elmtSideImage = document.getElementById("sideImage");   //Image on left side
